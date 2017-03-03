@@ -1,0 +1,143 @@
+﻿<md-toolbar class="md-toolbar-custom-header">
+
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button hide-menu-close" aria-label="Menu Toggle" ng-click="menu()">
+            <md-icon md-font-icon="material-icons">menu</md-icon>
+        </md-button>
+
+
+        <span flex></span>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="Options" ng-click="vm.openToolsMenu($mdOpenMenu, ev)">
+                <md-icon md-font-icon="material-icons">more_vert</md-icon>
+            </md-button>
+            <md-menu-content width="3" class="md-functions-dropdown-sm">
+                <md-menu-item>
+                    <md-button class="md-primary" ng-click="vm.navigate('login')">
+                        <md-icon md-font-icon="material-icons">reply</md-icon>Sign In
+                    </md-button>
+                </md-menu-item>
+
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="md-toolbar-tools md-toolbar-custom-heading">
+        <div id="services-section" flex layout="row" layout-align="start start">
+            <img src="../../../assets/img/sight1.png" />
+            <h1 style="font-size:-webkit-xxx-large">Testing College</h1>
+        </div>
+    </div>
+    <div class="header-tabs md-toolbar-tools" hide show-gt-sm>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('home')">Home</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('aboutUs')">About Us</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('services')">Services</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('portfolio')">Portfolio</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : true}" class="" ng-click="vm.navigate('contactUs')">Contact Us</md-button>
+        </div>
+    </div>
+    <div class="header-tabs" hide show-sm>
+        <md-select ng-model="tabs" aria-label="mobileMenu">
+            <md-option value="Home" aria-label="Home">
+                <span aria-label="Home">Home</span>
+            </md-option>
+        </md-select>
+    </div>
+</md-toolbar>
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <div layout-gt-md="row" layout-md="column">
+            <div flex>
+                <md-content class="md-padding">
+                    <div class="section-title wow fadeInDown">
+                        <h2><strong>Contact</strong> us</h2>
+                        <hr>
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>-->
+                        <p>Please feel free to leave us a message, and we will get one of our consultant get back to your as soon as possible.</p>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="col-md-4">
+                            <i class="fa fa-map-marker fa-2x"></i>
+                            <p>
+                                41 Parklands Avenue<br>
+                                Alberton, JHB, 1449
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-envelope-o fa-2x"></i>
+                            <p>info@sbit.co.za</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-phone fa-2x"></i>
+                            <p> +27 79 124 0425</p>
+                            <p> +27 76 255 1150</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+            </div>
+            <div flex="10"></div>
+            <div flex>
+                <form name="vm.messageForm">
+                    <div layout-gt-md="row" layout-md="column">
+                        <div flex>
+                            <div class="section-title wow fadeInDown">
+                                <h2>Leave us a message</h2>
+                            </div>
+                            <div layout-gt-md="row" layout-md="column">
+                                <div flex>
+                                    <md-input-container class="md-block">
+                                        <label>Name</label>
+                                        <input ng-model="vm.message.name" required name="name" type="text" />
+                                        <div ng-messages="vm.messageForm.name.$error" ng-if="vm.messageForm.name.$dirty || vm.formSubmitted">
+                                            <div ng-message="required">The field above is required</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div flex="5"></div>
+                                <div flex>
+                                    <md-input-container class="md-block">
+                                        <label>Email</label>
+                                        <input ng-model="vm.message.email" required name="email" type="email" />
+                                        <div ng-messages="vm.messageForm.email.$error" ng-if="vm.messageForm.email.$dirty || vm.formSubmitted">
+                                            <div ng-message="required">The field above is required</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout-gt-md="row" layout-md="column">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label>Message</label>
+                                <input ng-model="vm.message.description" required name="message" type="text" />
+                                <div ng-messages="vm.messageForm.message.$error" ng-if="vm.messageForm.message.$dirty || vm.formSubmitted">
+                                    <div ng-message="required">The field above is required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </form>
+                <md-content class="md-padding"> 
+                    <div layout="row" layout-align="center center" ng-if="vm.messageSent">
+                        <p style="color: green;font-size: smaller;">Message is sent successfully</p>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            
+                            <md-button class="md-primary md-primary-custom" ng-click="vm.send(vm.message)">Send Message</md-button>
+                        </div>
+</md-content>
+            </div>
+            <div flex="10"></div>
+        </div>
+    </md-content>
+</md-content>
+

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{74B79E9D-31A1-43BF-AB54-2C3A73E60CD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F16D046-9CF3-4FA8-B021-FE93A274E330}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LFPC.WebApplication", "src\E Learning\LFPC.WebApplication.xproj", "{E246B973-CA2C-45F9-9F46-9E209A0D0CFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E246B973-CA2C-45F9-9F46-9E209A0D0CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E246B973-CA2C-45F9-9F46-9E209A0D0CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E246B973-CA2C-45F9-9F46-9E209A0D0CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E246B973-CA2C-45F9-9F46-9E209A0D0CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E246B973-CA2C-45F9-9F46-9E209A0D0CFA} = {74B79E9D-31A1-43BF-AB54-2C3A73E60CD0}
+	EndGlobalSection
+EndGlobal

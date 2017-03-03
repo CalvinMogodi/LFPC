@@ -1,0 +1,45 @@
+﻿<md-content class="main-content md-padding page-content padding-bottom-8 transparent">
+    <md-content layout="column" class="md-title-header-bar" ng-if="vm.selectedQuoteRequestDetails.length != 0">
+        <div flex="auto" layout="row" class="md-padding color-medium-grey">
+            <div flex="30" layout="column" layout-align="start start">
+                <p flex class="no-margin"><strong>ELearning </strong>Chat Room</p>
+            </div>
+        </div>
+    </md-content>
+</md-content>
+<md-content class="main-content md-padding md-fade-in page-content transparent">
+    <md-content class="box-shadow">
+
+        <div class="md-padding">
+            <div layout="row" ng-repeat="chat in vm.chats track by $index">
+                <div class="md-comment margin-bottom-8" layout="row">
+                    <img src="{{chat.image}}" flex="initial" />
+                    <div layout="column" flex class="md-padding">
+                        <p flex class="no-margin"><strong>{{chat.user}}</strong></p>
+                        <p flex class="no-margin">{{chat.text}}</p>
+                    </div>
+                    <div layout="row" layout-align="end center" class="md-padding">
+                        <p style="font-size: 0.8em;">{{ chat.TimeSubmitted}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div layout="row" class="margin-top-16 margin-bottom-16">
+            <div flex class="md-line"></div>
+        </div>
+
+        <div layout="row" class="md-padding">
+            <md-input-container flex class="md-block">
+                <label>Comment</label>
+                <input ng-model="vm.chat" type="text" />
+            </md-input-container>
+            <div flex="5"></div>
+            <div flex="initial" layout="column" layout-align="center end">
+                <md-button class="md-primary-custom" ng-click="vm.addMessage(vm.chat)">Send</md-button>
+            </div>
+        </div>
+    </md-content>
+</md-content>

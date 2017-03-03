@@ -1,0 +1,43 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon"
+                 show-search="false"
+                 show-new-button="true"
+                 add-new-button-function="vm.newAnnoucement()">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                    <tr>
+                        <th name="Title"></th>
+                        <th name="Subject"></th>
+                        <th name="Date"></th>
+                        <th name="Description"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="annoucement in vm.annoucements" class="hover">
+                        <td>{{annoucement.title}}</td>
+                        <td>{{annoucement.subject.title}}</td>
+                        <td>{{annoucement.date}}</td>
+                        <td>{{annoucement.description}}</td>
+                        <td>
+                            <md-button class="md-icon-button" ng-click="vm.editAnnoucement(annoucement)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">edit</md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="vm.deleteAnnoucement(annoucement, $index)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-container>
+            <md-data-table-pagination class="margin-bottom-16" md-limit="vm.pagenation.limit" md-page="vm.pagenation.page" md-total="{{vm.annoucements.length}}"></md-data-table-pagination>
+        </md-data-table-container>
+    </md-content>
+</md-content>

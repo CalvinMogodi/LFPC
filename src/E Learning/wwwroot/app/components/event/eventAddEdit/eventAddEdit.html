@@ -1,0 +1,57 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <form name="vm.eventForm">
+                <div layout-gt-md="row" layout-md="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input ng-model="vm.event.title" required name="title" type="text" />
+                            <div ng-messages="vm.eventForm.title.$error" ng-if="vm.eventForm.title.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Select Class</label>
+                            <md-select ng-model="vm.event.class" required name="class">
+                                <md-option ng-value="class" ng-repeat="class in vm.classes track by $index">{{class.description}}</md-option>
+                            </md-select>
+                            <div ng-messages="vm.eventForm.class.$error" ng-if="vm.eventForm.class.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select class</div>
+                            </div>
+                        </md-input-container>
+                        <div flex flex-gt-md="33" layout="row" class="md-block">
+                            <md-datepicker flex="auto" class="md-datepicker-custom md-hide-overflow" ng-model="vm.event.startDate" md-placeholder="Select Start date"></md-datepicker>
+                        </div>
+                        <div flex flex-gt-md="33" layout="row" class="md-block">
+                            <md-datepicker flex="auto" class="md-datepicker-custom md-hide-overflow" ng-model="vm.event.endDate" md-placeholder="Select End Date"></md-datepicker>
+                        </div>
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                            <input ng-model="vm.event.description" required name="description" type="text" />
+                            <div ng-messages="vm.eventForm.description.$error" ng-if="vm.eventForm.description.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <md-content class="md-padding">
+                <div layout="row">
+                    <div flex="50" layout="column" layout-align="start start">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Cancel</md-button>
+                    </div>
+                    <div flex="50" layout="row" layout-align="end end">
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == false" ng-click="vm.create(vm.event)">Add</md-button>
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == true" ng-click="vm.update(vm.event)">Update</md-button>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
+

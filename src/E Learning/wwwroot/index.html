@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html ng-app="LFPC">
+<head>
+    <meta charset="utf-8" />
+    <title>E Learning</title>
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="assets/css/ui-grid.css" rel="stylesheet" />
+</head>
+<body ng-controller="indexController" ng-class="{'md-login' : currentUrl === '/login' ||  currentUrl === '/signUp'}">
+
+    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login'}" class="layout-fill" style="height:100%">
+
+        <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-whiteframe-z2 md-sidenav-left gt-md-closed md-locked-open" ng-hide="!vm.userAuthenticated">
+            <div flex layout="column" layout-fill>
+                <img src="assets/img/login_background.png" style="height: 180px;"/>
+
+                <div class="md-padding profile-area margin-top-16" layout="column" layout-align="center center">
+                    <div flex layout="row">
+                        <img src="assets/img/placeholder.png" />
+                        <div class="online"></div>
+                    </div>
+                    <div flex layout="column" layout-align="center center">
+                        <p class="md-name">{{displayName}}</p>
+                    </div>
+                </div>
+
+                <md-menu-sidenav>
+                    <md-menu-sidenav-item ng-click="navigateTo('/dashboard')">
+                        <md-menu-sidenav-title>
+                            <h1 class="md-body-2" flex><span><md-icon flex="15">home</md-icon></span>Dashboard</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>                    
+                </md-menu-sidenav>
+                <md-menu-sidenav-item ng-click="navigateTo('/annoucement')" ng-if="userType == 'lecturer'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>code</md-icon></span>Annoucements</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/assignment')" ng-if="userType == 'lecturer'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>business_center</md-icon></span>Assignments</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/chatRoom')" ng-if="userType != 'admin'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>forum</md-icon></span>@Chat</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/class')" ng-if="userType != 'lecturer'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>business_center</md-icon></span>Classes</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/course')" ng-if="userType == 'admin'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>forum</md-icon></span>Course</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/event')">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>toys</md-icon></span>Events</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/message')">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>forum</md-icon></span>Messages</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/resource')" ng-if="userType != 'admin'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>toys</md-icon></span>Resource</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/studentsReport')" ng-if="userType == 'admin'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>live_help</md-icon></span>Students</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/subject')" ng-if="userType != 'lecturer'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>business_center</md-icon></span>Subjects</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/user')" ng-if="userType == 'admin'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>face</md-icon></span>Users</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+                <md-menu-sidenav-item ng-click="navigateTo('/quiz')" ng-if="userType == 'lecturer'">
+                    <md-menu-sidenav-title>
+                        <h1 class="md-body-2" flex><span><md-icon>forum</md-icon></span>Quiz</h1>
+                    </md-menu-sidenav-title>
+                </md-menu-sidenav-item>
+            </div>
+        </md-sidenav>
+
+        <div layout="row" layout-fill>
+            <div layout="column" flex style="overflow: auto" ng-class="{'layout-fill' : currentUrl === '/login'}">
+                <div ng-view ng-class="{'layout-fill' : currentUrl === '/login'}"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAtFPSaLAu6TS-eTffJt-izpc7GuJ134tw",
+    authDomain: "lfpc-221e1.firebaseapp.com",
+    databaseURL: "https://lfpc-221e1.firebaseio.com",
+    storageBucket: "lfpc-221e1.appspot.com",
+    messagingSenderId: "397828995184"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<!--Libraries-->
+<script src="assets/js/angular.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script src="assets/js/ngstorage.min.js"></script>
+<script src="assets/js/md-data-table.js"></script>
+<script src="assets/js/ui-grid.js"></script>
+<script src="assets/js/pdfmake.js"></script>
+<script src="assets/js/vfs_fonts.js"></script>
+<script src="assets/js/angular-messages.js"></script>
+<script src="assets/js/angular-moment.min.js"></script>
+
+<!-- Angualr Material -->
+<script src="assets/js/angular-animate.js"></script>
+<script src="assets/js/angular-aria.js"></script>
+<script src="assets/js/angular-material.js"></script>
+<script src="assets/js/material-menu-sidenav.js"></script>
+<script src="assets/js/md-data-table.js"></script>
+
+<!--App Config-->
+<script src="app/app.js"></script>
+<script src="app/config.route.js"></script>
+
+<!--Firebase-->
+<script src="assets/js/angularfire.min.js"></script>
+<script src="assets/js/firebase.js"></script>
+
+<!--Directives-->
+<script src="app/common/pageheader/dirpageheader.js"></script>
+<script src="app/common/helper/modal.js"></script>
+
+<!--Controllers-->
+<script src="index.controller.js"></script>
+<script src="app/components/requestCourier/requestCourier.controller.js"></script>
+<script src="app/common/login/login.controller.js"></script>
+<script src="app/common/signUp/signUp.controller.js"></script>
+<!-- Factory -->
+
+<!-- Services -->
+<script src="app/common/login/login.service.js"></script>
+<script src="app/common/alert/alertdialog.service.js"></script>
+<script src="app/common/helper/helper.js"></script>
+
+<script src="app/components/services/services.controller.js"></script>
+<script src="app/components/portfolio/portfolio.controller.js"></script>
+<script src="app/components/home/home.controller.js"></script>
+<script src="app/components/contactUs/contactUs.controller.js"></script>
+<script src="app/components/aboutUs/aboutUs.controller.js"></script>

@@ -1,0 +1,101 @@
+﻿<md-toolbar class="md-toolbar-custom-header">
+
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button hide-menu-close" aria-label="Menu Toggle" ng-click="menu()">
+            <md-icon md-font-icon="material-icons">menu</md-icon>
+        </md-button>
+
+
+        <span flex></span>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="Options" ng-click="vm.openToolsMenu($mdOpenMenu, ev)">
+                <md-icon md-font-icon="material-icons">more_vert</md-icon>
+            </md-button>
+            <md-menu-content width="3" class="md-functions-dropdown-sm">
+                <md-menu-item>
+                    <md-button class="md-primary" ng-click="vm.navigate('login')">
+                        <md-icon md-font-icon="material-icons">reply</md-icon>Sign In
+                    </md-button>
+                </md-menu-item>
+
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="md-toolbar-tools md-toolbar-custom-heading">
+        <div id="services-section" flex layout="row" layout-align="start start">
+            <img src="../../../assets/img/sight1.png" />
+            <h1 style="font-size:-webkit-xxx-large">Testing College</h1>
+        </div>
+    </div>
+    <div class="header-tabs md-toolbar-tools" hide show-gt-sm>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('home')">Home</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('aboutUs')">About Us</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : true}" class="" ng-click="vm.navigate('services')">Services</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' :false }" class="" ng-click="vm.navigate('portfolio')">Portfolio</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('contactUs')">Contact Us</md-button>
+        </div>
+    </div>
+    <div class="header-tabs" hide show-sm>
+        <md-select ng-model="tabs" aria-label="mobileMenu">
+            <md-option value="Home" aria-label="Home">
+                <span aria-label="Home">Home</span>
+            </md-option>
+        </md-select>
+    </div>
+</md-toolbar>
+    <md-content class="main-content md-fade-in md-padding page-content transparent">
+        <md-content class="box-shadow">
+            <md-content class="md-padding" >
+                <!-- Services Section -->
+                <div id="services-section" flex layout="row" layout-align="center center">
+                    <div class="container">
+                        <div class="section-title wow fadeInDown">
+                            <h2>Our <strong>Services</strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                            <p>We are a full service interactive agency that delivers digital age solutions that help businesses connect with their clients. </p>
+                        </div>
+                        <div class="space"></div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 service wow fadeInUp" data-wow-delay="200ms">
+                                <i class="fa fa-desktop"></i>
+                                <h4><strong>Web design</strong></h4>
+                                <span>
+                                    We design industry leading websites that will make you stand out from the competition. They will attract customers and increase revenue rappidly and expectedly.
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-6 service wow fadeInUp" data-wow-delay="400ms">
+                                <i class="fa fa-gears"></i>
+                                <h4><strong>App Development</strong></h4>
+                                <span>
+                                    We love taking ideas and turning them into real apps. We are passionate, creative, and have experience developing
+                                    products as entrepreneurs.
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-6 service wow fadeInUp" data-wow-delay="600ms">
+                                <i class="fa fa-server"></i>
+                                <h4><strong>Server</strong></h4>
+                                <span>
+                                    When your email is down, so is your business. We know how downtime impacts your productivity and your bottom line. That's why we back Hosted Exchange.
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-sm-6 service wow fadeInUp" data-wow-delay="800ms">
+                                <i class="fa fa-rocket"></i>
+                                <h4><strong>Branding</strong></h4>
+                                <span>We know how to build products that can scale to your business' needs, regardless if you're a startup, an enterprise, or a governmental organization.Branding is also our speciality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>

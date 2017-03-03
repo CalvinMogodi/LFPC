@@ -1,0 +1,45 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon"
+                 show-search="false"
+                 show-new-button="vm.showAddButton"
+                 add-new-button-function="vm.newEvent()">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                    <tr>
+                        <th name="Title"></th>
+                        <th name="Class"></th>
+                        <th name="Start Date"></th>
+                        <th name="End Date"></th>
+                        <th name="Description"></th>
+                        <th ng-if="!vm.isStudent"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="event in vm.events" class="hover">
+                        <td>{{event.title}}</td>
+                        <td>{{event.class.description}}</td>
+                        <td>{{event.startDate}}</td>
+                        <td>{{event.endDate}}</td>
+                        <td>{{event.description}}</td>
+                        <td ng-if="!vm.isStudent">
+                            <md-button class="md-icon-button" ng-click="vm.editEvent(event)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">edit</md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="vm.deleteEvent(event)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+        <md-data-table-container>
+            <md-data-table-pagination class="margin-bottom-16" md-limit="vm.pagenation.limit" md-page="vm.pagenation.page" md-total="{{vm.events.length}}"></md-data-table-pagination>
+        </md-data-table-container>
+    </md-content>
+</md-content>

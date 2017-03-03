@@ -1,0 +1,34 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+    <div layout="column" class="md-padding layout-fill">
+                <table md-data-table md-progress="deferred">
+                    <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                        <tr>
+                            <th name="Subject"></th>
+                            <th name="Select"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="subject in vm.subjectsToLink" class="hover">
+                            <td>{{subject.title}}</td>
+                            <td>
+                                <md-switch class="md-primary" aria-label="" ng-model="subject.isActive" ng-value="false">
+                                    <label ng-if="subject.isActive">Yes</label>
+                                    <label ng-if="!subject.isActive">No</label>
+                                </md-switch>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <md-content class="md-padding">
+                    <div layout="row">
+                        <div flex="50" layout="column" layout-align="start start">
+                            <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Back</md-button>
+                        </div>
+                        <div flex="50" layout="row" layout-align="end end">
+                            <md-button class="md-primary md-primary-custom" ng-click="vm.linkSubjects(vm.subjectsToLink)">Link</md-button>
+                        </div>
+                    </div>
+                </md-content>
+        </div>

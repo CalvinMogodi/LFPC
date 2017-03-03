@@ -1,0 +1,90 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <form name="vm.userForm">
+                <div layout-gt-md="row" layout-md="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <label>First Name</label>
+                            <input ng-model="vm.user.firstname" required name="firstname" type="text" />
+                            <div ng-messages="vm.userForm.firstname.$error" ng-if="vm.userForm.firstname.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Surname</label>
+                            <input ng-model="vm.user.surname" required name="surname" type="text" />
+                            <div ng-messages="vm.userForm.surname.$error" ng-if="vm.userForm.surname.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Select User Type</label>
+                            <md-select ng-model="vm.user.userType" required name="userType">
+                                <md-option value="student">Student</md-option>
+                                <md-option value="admin">Admin</md-option>
+                                <md-option value="lecturer">Lecturer</md-option>
+                            </md-select>
+                            <div ng-messages="vm.userForm.class.$error" ng-if="vm.assignmentForm.class.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select class</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" ng-if="vm.user.userType == 'student'">
+                            <label>Student Number</label>
+                            <input ng-model="vm.user.studentNumber" required name="studentNumber" type="number" />
+                            <div ng-messages="vm.userForm.studentNumber.$error" ng-if="vm.userForm.studentNumber.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container> 
+                        <md-input-container class="md-block" ng-if="vm.user.userType == 'student'">
+                            <label>Select Course</label>
+                            <md-select ng-model="vm.user.course" required name="course">
+                                <md-option ng-value="course" ng-repeat="course in vm.courses">{{course.title}}</md-option>
+                            </md-select>
+                            <div ng-messages="vm.userForm.course.$error" ng-if="vm.assignmentForm.course.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select course</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>username</label>
+                            <input ng-model="vm.user.username" required name="username" type="email" />
+                            <div ng-messages="vm.userForm.username.$error" ng-if="vm.userForm.username.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Password</label>
+                            <input ng-model="vm.user.password" required name="password" type="password" />
+                            <div ng-messages="vm.userForm.password.$error" ng-if="vm.userForm.password.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Confirm Password</label>
+                            <input ng-model="vm.user.confirmPassword" required name="confirmPassword" type="password" />
+                            <div ng-messages="vm.userForm.confirmPassword.$error" ng-if="vm.userForm.confirmPassword.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <md-content class="md-padding">
+                <div layout="row">
+                    <div flex="50" layout="column" layout-align="start start">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Cancel</md-button>
+                    </div>
+                    <div flex="50" layout="row" layout-align="end end">
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == false" ng-click="vm.create(vm.user)">Add</md-button>
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == true" ng-click="vm.update(vm.user)">Update</md-button>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
+

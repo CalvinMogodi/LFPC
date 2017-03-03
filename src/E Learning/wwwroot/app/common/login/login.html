@@ -1,0 +1,42 @@
+﻿<md-content class="main-content md-padding page-content transparent" layout="column" layout-align="center center" layout-fill>
+    <div layout-md="column">
+        <div flex layout="column" style="min-width: 500px">
+            <div flex layout="row" layout-align="center center" class="margin-bottom-32">
+                <img src="assets/img/sight1.png" height="125" />
+            </div>
+            <form name="vm.loginForm">
+                <div layout="row">
+                    <md-icon flex="initial" style="margin: 34px 8px 0px 0px;">person</md-icon>
+                    <md-input-container flex class="md-block">
+                        <label>Username</label>
+                        <input ng-model="vm.login.username" required name="username" type="text" />
+                        <div ng-messages="vm.loginForm.username.$error" ng-if="vm.loginForm.username.$dirty || vm.loginFormSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                            <div ng-message="pattern">Special characters are not allowed</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-icon flex="initial" style="margin: 32px 8px 0px 0px;">lock</md-icon>
+                    <md-input-container flex class="md-block">
+                        <label>Password</label>
+                        <input ng-model="vm.login.password" required name="password" type="password" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                        <div ng-messages="vm.loginForm.password.$error" ng-if="vm.loginForm.password.$dirty || vm.loginFormSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                            <div ng-message="pattern">Special characters are not allowed</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+       
+        <div layout="row" class="margin-top-16">
+            
+            <div flex layout="row" layout-align="center center" class="md-login-button">
+                <md-button class="md-primary md-primary-custom" ng-click="login(vm.login)">Login</md-button>
+            </div>
+
+        </div>
+    </div>
+
+</md-content>

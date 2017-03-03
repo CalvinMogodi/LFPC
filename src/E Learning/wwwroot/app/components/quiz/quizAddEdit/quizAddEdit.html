@@ -1,0 +1,51 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <form name="vm.quizForm">
+                <div layout-gt-md="row" layout-md="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input ng-model="vm.quiz.title" required name="title" type="text" />
+                            <div ng-messages="vm.quizForm.title.$error" ng-if="vm.quizForm.title.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Select Subject</label>
+                            <md-select ng-model="vm.quiz.subject" required name="class">
+                                <md-option ng-value="subject" ng-repeat="subject in vm.subjects track by $index">{{subject.title}}</md-option>
+                            </md-select>
+                            <div ng-messages="vm.quizForm.subject.$error" ng-if="vm.quizForm.subject.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select subject</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                            <input ng-model="vm.quiz.description" required name="description" type="text" />
+                            <div ng-messages="vm.quizForm.description.$error" ng-if="vm.quizForm.description.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <md-content class="md-padding">
+                <div layout="row">
+                    <div flex="50" layout="column" layout-align="start start">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Cancel</md-button>
+                    </div>
+                    <div flex="50" layout="row" layout-align="end end">
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == false" ng-click="vm.create(vm.quiz)">Add</md-button>
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isEdit == true" ng-click="vm.update(vm.quiz)">Update</md-button>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
+

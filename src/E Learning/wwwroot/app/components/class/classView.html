@@ -1,0 +1,39 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon"
+                 show-search="false"
+                 show-new-button="vm.showAddButton"
+                 add-new-button-function="vm.newClass()">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred">
+                <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                    <tr>
+                        <th name="Title"></th>
+                        <th name="Description"></th>
+                        <th ng-if="!vm.isStudent"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="class in vm.classes" ng-click="vm.showClass(class)" class="hover">
+                        <td>{{class.title}}</td>
+                        <td>{{class.description}}</td>
+                        <td ng-if="!vm.isStudent">
+                            <md-button class="md-icon-button" ng-click="vm.editClass(class)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">edit</md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" ng-click="vm.deleteClass(class, $index)">
+                                <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
+                            </md-button>
+                        </td>                       
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+            <md-data-table-container>                
+                <md-data-table-pagination class="margin-bottom-16" md-limit="vm.pagenation.limit" md-page="vm.pagenation.page" md-total="{{vm.classes.length}}"></md-data-table-pagination>
+            </md-data-table-container>
+    </md-content>   
+</md-content>

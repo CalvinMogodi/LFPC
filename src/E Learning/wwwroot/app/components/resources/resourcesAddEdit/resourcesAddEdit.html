@@ -1,0 +1,37 @@
+﻿<dir-page-header heading="vm.heading"
+                 icon="vm.icon">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <form name="vm.resourceForm">
+                <div layout-gt-md="row" layout-md="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input ng-model="vm.resource.title" required name="title" type="text" />
+                            <div ng-messages="vm.resourceForm.title.$error" ng-if="vm.resourceForm.title.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <div>
+                            <input type="file" ng-model="vm.resource.file" id="file" name="file" accept="application/pdf" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <md-content class="md-padding">
+                <div layout="row">
+                    <div flex="50" layout="column" layout-align="start start">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Cancel</md-button>
+                    </div>
+                    <div flex="50" layout="row" layout-align="end end">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.create(vm.resource)">Add</md-button>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
+

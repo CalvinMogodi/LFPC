@@ -1,0 +1,65 @@
+﻿<dir-page-header heading="vm.heading"
+                 show-search="false"
+                 tabs="vm.tabs"
+                 tab-Clicked-Function="vm.tabClickedFunction">
+</dir-page-header>
+
+<md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <form name="vm.messageForm">
+                <div layout-gt-md="row" layout-md="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <label>From</label>
+                            <md-select ng-model="vm.message.sendTo" ng-disabled="vm.isReadOnly" required name="sendTo" ng-change="vm.getUsersByType(vm.message.sendTo)">
+                                <md-option value="student">Student</md-option>
+                                <md-option value="admin">Admin</md-option>
+                                <md-option value="lecturer">Lecturer</md-option>
+                            </md-select>
+                            <div ng-messages="vm.messageForm.sendTo.$error" ng-if="vm.sendTo.class.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select class</div>
+                            </div>
+                        </md-input-container>
+
+                        <!--<md-input-container class="md-block">
+                            <label>Select User Type</label>
+                            <md-select ng-model="vm.message.user" required name="user" ng-disabled="vm.isReadOnly">
+                                <md-option ng-value="user" ng-repeat="user in vm.listOfUsers track by $index">{{user.firstName}} {{user.surname}}</md-option>
+                            </md-select>
+                            <div ng-messages="vm.messageForm.user.$error" ng-if="vm.assignmentForm.user.$dirty || vm.formSubmitted">
+                                <div ng-message="required">Please select class</div>
+                            </div>
+                        </md-input-container>-->
+                        <md-input-container class="md-block">
+                            <label>Subject</label>
+                            <input ng-model="vm.message.subject" required name="subject" type="text" ng-disabled="vm.isReadOnly" />
+                            <div ng-messages="vm.messageForm.subject.$error" ng-if="vm.messageForm.subject.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Message</label>
+                            <input ng-model="vm.message.message" required name="message" ng-disabled="vm.isReadOnly" />
+                            <div ng-messages="vm.messageForm.message.$error" ng-if="vm.messageForm.message.$dirty || vm.formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <md-content class="md-padding">
+                <div layout="row">
+                    <div flex="50" layout="column" layout-align="start start">
+                        <md-button class="md-primary md-primary-custom" ng-click="vm.cancel()">Cancel</md-button>
+                    </div>
+                    <div flex="50" layout="row" layout-align="end end">
+                        <md-button class="md-primary md-primary-custom" ng-if="!vm.isReadOnly" ng-click="vm.sendMessage(vm.message)">Send Message</md-button>
+                        <md-button class="md-primary md-primary-custom" ng-if="vm.isReadOnly" ng-click="vm.cancel()">Done</md-button>
+                    </div>
+                </div>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
+

@@ -1,0 +1,124 @@
+﻿<md-content class="main-content md-padding page-content transparent" layout="column" layout-align="center center" layout-fill>
+    
+        <div flex layout="row" layout-align="center center" class="margin-bottom-32">
+            <img src="assets/img/sight1.png" height="125" />
+        </div>
+        <md-input-container flex class="md-block">
+            <md-radio-group ng-model="vm.user.type">
+                <md-radio-button value="1" class="md-primary">User</md-radio-button>
+                <md-radio-button value="2" class="md-primary">Courier</md-radio-button>
+            </md-radio-group>
+        </md-input-container>
+        <form name="vm.userForm" ng-show="vm.user.type == 1">
+            <div flex layout="column" style="min-width: 500px">
+                <md-input-container flex class="md-block">
+                    <label>First Name</label>
+                    <input ng-model="vm.user.firstName" required name="firstName" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.userForm.firstName.$error" ng-if="vm.userForm.firstName.$dirty || vm.userFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Surname</label>
+                    <input ng-model="vm.user.surname" required name="surname" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.userForm.surname.$error" ng-if="vm.userForm.surname.$dirty || vm.userFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Email</label>
+                    <input ng-model="vm.user.username" type="email" required name="username" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" />
+                    <div ng-messages="vm.userForm.username.$error" ng-if="vm.userForm.username.$dirty || vm.userFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Please enter a valid email address</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Password</label>
+                    <input ng-model="vm.user.password" required name="password" type="password" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.userForm.password.$error" ng-if="vm.userForm.password.$dirty || vm.userFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+                <div flex layout="row" layout-align="center center" class="md-login-button">
+                    <md-button class="md-primary md-primary-custom" ng-click="vm.userSignUp(vm.user)">Sign Up</md-button>
+                </div>
+            </div>
+        </form>
+
+        <form name="vm.courierForm" ng-show="vm.user.type == 2">
+            <div flex layout="column" style="min-width: 500px">
+                <md-input-container flex class="md-block">
+                    <label>Company Name</label>
+                    <input ng-model="vm.courier.name" required name="courierName" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.courierForm.courierName.$error" ng-if="vm.courierForm.courierName.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Contact Number</label>
+                    <input ng-model="vm.courier.contactNumber" required name="contactNumber" maxlength="10" minlength="10" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.courierForm.contactNumber.$error" ng-if="vm.courierForm.contactNumber.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="minlength maxlength pattern">please enter valid contact number</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Email</label>
+                    <input ng-model="vm.courier.email" type="email" required name="courierEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" />
+                    <div ng-messages="vm.courierForm.courierEmail.$error" ng-if="vm.courierForm.courierEmail.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Please enter a valid email address</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Address</label>
+                    <input ng-model="vm.courier.address" required name="address" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.courierForm.address.$error" ng-if="vm.courierForm.address.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>username</label>
+                    <input ng-model="vm.courier.username" required name="username" type="text" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.courierForm.username.$error" ng-if="vm.courierForm.username.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex class="md-block">
+                    <label>Password</label>
+                    <input ng-model="vm.courier.password" required name="password" type="password" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    <div ng-messages="vm.courierForm.password.$error" ng-if="vm.courierForm.password.$dirty || vm.courierFormSubmitted">
+                        <div ng-message="required">The field above is required</div>
+                        <div ng-message="pattern">Special characters are not allowed</div>
+                    </div>
+                </md-input-container>
+                <h6>
+                    Please note: In order to be able to login and provide service to our clients <br />
+                    you have to pay a fee of R1000.00
+                </h6>
+                <div flex layout="row" layout-align="center center" class="md-login-button">
+                    <md-button class="md-primary md-primary-custom" ng-click="vm.courierSignUp(vm.courier)">Sign Up</md-button>
+                </div>
+            </div>
+            
+        </form>
+       
+</md-content>
+
+
+

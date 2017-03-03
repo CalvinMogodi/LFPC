@@ -1,0 +1,67 @@
+﻿<md-toolbar class="md-toolbar-custom-header">
+
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button hide-menu-close" aria-label="Menu Toggle" ng-click="menu()">
+            <md-icon md-font-icon="material-icons">menu</md-icon>
+        </md-button>
+
+
+        <span flex></span>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="Options" ng-click="vm.openToolsMenu($mdOpenMenu, ev)">
+                <md-icon md-font-icon="material-icons">more_vert</md-icon>
+            </md-button>
+            <md-menu-content width="3" class="md-functions-dropdown-sm">
+                <md-menu-item>
+                    <md-button class="md-primary" ng-click="vm.navigate('login')">
+                        <md-icon md-font-icon="material-icons">reply</md-icon>Sign In
+                    </md-button>
+                </md-menu-item>
+
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="md-toolbar-tools md-toolbar-custom-heading">
+        <div id="services-section" flex layout="row" layout-align="start start">
+            <img src="../../../assets/img/sight1.png" />
+            <h1 style="font-size:-webkit-xxx-large">Testing College</h1>
+        </div>
+    </div>
+    <div class="header-tabs md-toolbar-tools" hide show-gt-sm>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('home')">Home</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : true}" class="" ng-click="vm.navigate('aboutUs')">About Us</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('services')">Services</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('portfolio')">Portfolio</md-button>
+        </div>
+        <div>
+            <md-button ng-class="{'md-active' : false}" class="" ng-click="vm.navigate('contactUs')">Contact Us</md-button>
+        </div>
+    </div>
+    <div class="header-tabs" hide show-sm>
+        <md-select ng-model="tabs" aria-label="mobileMenu">
+            <md-option value="Home" aria-label="Home">
+                <span aria-label="Home">Home</span>
+            </md-option>
+        </md-select>
+    </div>
+</md-toolbar>
+    <md-content class="main-content md-fade-in md-padding page-content transparent">
+    <md-content class="box-shadow">
+        <md-content class="md-padding">
+            <div class="section-title text-center wow fadeInDown">
+                <h2><strong>About</strong> us</h2>
+                <hr>
+                <div class="clearfix"></div>
+                <p><strong>Sight Business Integration Technology </strong> is a leading, web and mobile applications development agency. We believe in providing forward thinking creative  solutions that yield exceptional results.</p>
+                <p> With a solid approach to planning, realistic implementation and value, we deliver customized, results-driven programs to achieve our clients’ specific marketing goals.</p>
+            </div>
+        </md-content>
+    </md-content>
+</md-content>
